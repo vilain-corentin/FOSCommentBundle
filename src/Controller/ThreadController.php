@@ -152,7 +152,7 @@ class ThreadController extends AbstractFOSRestController
         $view = View::create()
             ->setData([
                 'data' => [
-                    'form' => $form,
+                    'form' => $form->createView(),
                     'id' => $id,
                     'isCommentable' => $thread->isCommentable(),
                 ],
@@ -749,7 +749,7 @@ class ThreadController extends AbstractFOSRestController
             ->setStatusCode(Response::HTTP_BAD_REQUEST)
             ->setData([
                 'data' => [
-                    'form' => $form,
+                    'form' => $form->createView(),
                     'id' => $form->getData()->getId(),
                     'isCommentable' => $form->getData()->isCommentable(),
                 ],
@@ -820,7 +820,7 @@ class ThreadController extends AbstractFOSRestController
         $redirect = new RedirectResponse($response->headers->get('Location'));
         $content = $redirect->getContent();
         $response->setContent($content);
-        $response->setStatusCode(301);
+        $response->setStatusCode(302);
 
         return $response;
     }
