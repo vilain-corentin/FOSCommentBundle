@@ -28,7 +28,7 @@ class DeleteCommentType extends AbstractType
     /**
      * Configures a form to delete a comment.
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder->add('state', HiddenType::class);
     }
@@ -36,7 +36,7 @@ class DeleteCommentType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => $this->commentClass,
@@ -46,7 +46,7 @@ class DeleteCommentType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function getBlockPrefix()
+    public function getBlockPrefix(): string
     {
         return 'fos_comment_delete_comment';
     }

@@ -28,7 +28,7 @@ class VoteType extends AbstractType
     /**
      * Configures a Comment form.
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder->add('value', TextareaType::class);
     }
@@ -36,7 +36,7 @@ class VoteType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => $this->voteClass,
@@ -46,7 +46,7 @@ class VoteType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function getBlockPrefix()
+    public function getBlockPrefix(): string
     {
         return 'fos_comment_vote';
     }

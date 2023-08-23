@@ -29,7 +29,7 @@ class ThreadType extends AbstractType
     /**
      * Configures a Thread form.
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder->add('id', TextType::class);
         $builder->add('permalink', TextareaType::class);
@@ -38,7 +38,7 @@ class ThreadType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => $this->threadClass,
@@ -48,7 +48,7 @@ class ThreadType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function getBlockPrefix()
+    public function getBlockPrefix(): string
     {
         return 'fos_comment_thread';
     }
