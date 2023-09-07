@@ -18,6 +18,7 @@ use FOS\CommentBundle\Model\CommentManagerInterface;
 use FOS\CommentBundle\Model\ThreadManagerInterface;
 use FOS\CommentBundle\Model\VotableCommentInterface;
 use FOS\CommentBundle\Model\VoteManagerInterface;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -30,13 +31,9 @@ use Symfony\Component\Security\Acl\Model\AclProviderInterface;
  *
  * @author Tim Nagel <tim@nagel.com.au>
  */
+#[AsCommand(name: 'fos:comment:fixAces')]
 class FixAcesCommand extends Command
 {
-    /**
-     * @var string
-     */
-    protected static $defaultName = 'fos:comment:fixAces';
-
     /**
      * @var AclProviderInterface
      */
@@ -95,7 +92,7 @@ class FixAcesCommand extends Command
     /**
      * {@inheritdoc}
      */
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->setDescription('Fixes Object Ace entries')

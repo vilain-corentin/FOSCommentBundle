@@ -14,6 +14,7 @@ namespace FOS\CommentBundle\Command;
 use FOS\CommentBundle\Acl\CommentAclInterface;
 use FOS\CommentBundle\Acl\ThreadAclInterface;
 use FOS\CommentBundle\Acl\VoteAclInterface;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -24,13 +25,9 @@ use Symfony\Component\Console\Output\OutputInterface;
  *
  * @author Tim Nagel <tim@nagel.com.au>
  */
+#[AsCommand(name: 'fos:comment:installAces')]
 class InstallAcesCommand extends Command
 {
-    /**
-     * @var string
-     */
-    protected static $defaultName = 'fos:comment:installAces';
-
     /**
      * @var CommentAclInterface
      */
@@ -61,7 +58,7 @@ class InstallAcesCommand extends Command
     /**
      * {@inheritdoc}
      */
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->setDescription('Installs global ACEs')

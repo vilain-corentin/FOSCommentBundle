@@ -26,7 +26,7 @@ class SortingPass implements CompilerPassInterface
     /**
      * {@inheritdoc}
      */
-    public function process(ContainerBuilder $container)
+    public function process(ContainerBuilder $container): void
     {
         if (!$container->hasDefinition('fos_comment.sorting_factory')) {
             return;

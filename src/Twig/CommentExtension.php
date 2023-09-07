@@ -43,7 +43,7 @@ final class CommentExtension extends AbstractExtension
     /**
      * {@inheritdoc}
      */
-    public function getTests()
+    public function getTests(): array
     {
         return [
             new TwigTest('fos_comment_in_state', [$this, 'isCommentInState']),
