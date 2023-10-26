@@ -30,6 +30,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 /**
  * Restful controller for the Threads.
@@ -389,7 +390,7 @@ class ThreadController extends AbstractFOSRestController
      *
      * @todo Add support page/pagesize/sorting/tree-depth parameters
      */
-    public function getThreadCommentsAction(Request $request, string $id): Response
+    public function getThreadCommentsAction(Request $request, ValidatorInterface $validator, string $id): Response
     {
         $displayDepth = $request->query->get('displayDepth');
         $sorter = $request->query->get('sorter');
@@ -405,7 +406,7 @@ class ThreadController extends AbstractFOSRestController
             $thread->setPermalink($permalink);
 
             // Validate the entity
-            $errors = $this->get('validator')->validate($thread, null, ['NewThread']);
+            $errors = $validator->validate($thread, null, ['NewThread']);
             if (count($errors) > 0) {
                 $view = View::create()
                     ->setStatusCode(Response::HTTP_BAD_REQUEST)
