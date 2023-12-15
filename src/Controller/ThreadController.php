@@ -620,7 +620,7 @@ class ThreadController extends AbstractFOSRestController
             ->setStatusCode(Response::HTTP_BAD_REQUEST)
             ->setData([
                 'data' => [
-                    'form' => $form,
+                    'form' => $form->createView(),
                     'id' => $id,
                     'parent' => $parent,
                 ],
@@ -650,7 +650,7 @@ class ThreadController extends AbstractFOSRestController
             ->setStatusCode(Response::HTTP_BAD_REQUEST)
             ->setData([
                 'data' => [
-                    'form' => $form,
+                    'form' => $form->createView(),
                 ],
                 'template' => '@FOSComment/Thread/new.html.twig',
             ]
@@ -691,7 +691,7 @@ class ThreadController extends AbstractFOSRestController
                 'data' => [
                     'id' => $id,
                     'commentId' => $commentId,
-                    'form' => $form,
+                    'form' => $form->createView(),
                 ],
                 'template' => '@FOSComment/Thread/vote_new.html.twig',
             ]
@@ -720,7 +720,7 @@ class ThreadController extends AbstractFOSRestController
             ->setStatusCode(Response::HTTP_BAD_REQUEST)
             ->setData([
                 'data' => [
-                    'form' => $form,
+                    'form' => $form->createView(),
                     'comment' => $form->getData(),
                 ],
                 'template' => '@FOSComment/Thread/comment_edit.html.twig',
@@ -781,7 +781,7 @@ class ThreadController extends AbstractFOSRestController
             ->setStatusCode(Response::HTTP_BAD_REQUEST)
             ->setData([
                 'data' => [
-                    'form' => $form,
+                    'form' => $form->createView(),
                     'id' => $id,
                     'commentId' => $form->getData()->getId(),
                     'value' => $form->getData()->getState(),
